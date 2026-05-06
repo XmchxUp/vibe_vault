@@ -54,8 +54,10 @@ export function PortfolioShowcase() {
       id="top"
       className="min-h-screen overflow-hidden bg-[#03050a] text-vault-text"
     >
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(0,229,255,0.16),transparent_28rem),radial-gradient(circle_at_82%_12%,rgba(255,43,214,0.13),transparent_28rem),linear-gradient(135deg,#03050a,#071017_52%,#03050a)]" />
-      <div className="pointer-events-none fixed inset-0 opacity-[0.045] [background-image:linear-gradient(rgba(255,255,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.8)_1px,transparent_1px)] [background-size:80px_80px]" />
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_15%_18%,rgba(0,229,255,0.18),transparent_34rem),radial-gradient(ellipse_at_88%_10%,rgba(255,43,214,0.16),transparent_32rem),radial-gradient(ellipse_at_54%_92%,rgba(182,255,59,0.08),transparent_34rem),linear-gradient(135deg,#03050a,#080713_42%,#071017_72%,#03050a)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[conic-gradient(from_140deg_at_52%_48%,rgba(0,229,255,0.09),rgba(255,43,214,0.11),rgba(255,209,102,0.06),rgba(0,229,255,0.09))] opacity-60 mix-blend-screen" />
+      <div className="pointer-events-none fixed inset-0 opacity-[0.09] [background-image:linear-gradient(115deg,rgba(255,255,255,0.52)_1px,transparent_1px),linear-gradient(25deg,rgba(255,255,255,0.28)_1px,transparent_1px)] [background-size:140px_140px,220px_220px]" />
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_center,transparent,rgba(3,5,10,0.72)_78%)]" />
 
       <section className="relative mx-auto grid min-h-screen max-w-[1680px] grid-rows-[auto_1fr_auto] px-4 py-4 sm:px-6 lg:px-8">
         <header className="z-20 flex items-center justify-between rounded-[8px] border border-white/12 bg-white/[0.045] px-4 py-3 backdrop-blur-2xl">

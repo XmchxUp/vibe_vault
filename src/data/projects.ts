@@ -13,6 +13,8 @@ export interface Project {
   techStack: string[];
   accent: "cyan" | "pink" | "lime" | "amber";
   previewMode?: "image" | "terminal";
+  format?: "desktop" | "phone";
+  gallery?: string[];
 }
 
 export const filters = ["All", "Web", "AI", "Tools", "Experiments"] as const;
@@ -20,6 +22,29 @@ export const filters = ["All", "Web", "AI", "Tools", "Experiments"] as const;
 export type ProjectFilter = (typeof filters)[number];
 
 export const projects: Project[] = [
+  {
+    id: "mood-map-miniprogram",
+    title: "Mood2Know",
+    category: "Experiments",
+    cover: "/project-covers/mood-map-1.png",
+    gallery: [
+      "/project-covers/mood-map-1.png",
+      "/project-covers/mood-map-2.png",
+      "/project-covers/mood-map-3.png",
+      "/project-covers/mood-map-4.png",
+    ],
+    repoUrl: "https://github.com/XmchxUp/mood_map_miniprogram",
+    demoUrl: "https://github.com/XmchxUp/mood_map_miniprogram#效果图",
+    demoLabel: "Preview",
+    description:
+      "A WeChat mini program for anonymous mood check-ins, showing nearby emotional distribution on a live map with local Go server storage.",
+    vibe:
+      "A soft social atlas: emotional heat, anonymous presence, city-level stats, and shareable mood cards wrapped in a mobile-first interaction.",
+    techStack: ["WeChat Mini Program", "JavaScript", "WXSS", "Go", "Geohash", "JSON"],
+    accent: "pink",
+    previewMode: "image",
+    format: "phone",
+  },
   {
     id: "bili-live-danmu-analyzer",
     title: "Bili Live Danmu Analyzer",
@@ -44,6 +69,7 @@ export const projects: Project[] = [
     ],
     accent: "cyan",
     previewMode: "image",
+    format: "desktop",
   },
   {
     id: "workout-page",
@@ -68,6 +94,7 @@ export const projects: Project[] = [
     ],
     accent: "lime",
     previewMode: "image",
+    format: "desktop",
   },
   {
     id: "blog",
@@ -84,6 +111,7 @@ export const projects: Project[] = [
     techStack: ["Astro", "MDX", "TypeScript", "CSS", "Cloudflare Pages"],
     accent: "pink",
     previewMode: "image",
+    format: "desktop",
   },
   {
     id: "cutline",
@@ -99,5 +127,6 @@ export const projects: Project[] = [
     techStack: ["Rust", "TOML", "ffmpeg", "ffprobe", "CLI"],
     accent: "amber",
     previewMode: "terminal",
+    format: "desktop",
   },
 ];
