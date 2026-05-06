@@ -44,25 +44,27 @@ The production output is generated in:
 dist/
 ```
 
-## Deploy to Cloudflare Pages
+## Deploy to Cloudflare
 
-Use Cloudflare Pages with GitHub integration.
+Use Cloudflare Workers Static Assets with GitHub integration. This gives the
+site a free public `*.workers.dev` domain and keeps SPA fallback in
+`wrangler.jsonc`.
 
 Recommended settings:
 
 ```text
 Framework preset: React (Vite) or None
 Build command: pnpm build
-Build output directory: dist
+Deploy command: pnpm run deploy
+Output directory: dist
 Production branch: main
-Node version: 20
-Deploy command: leave empty
+Node version: 22
 ```
 
 Cloudflare will provide a free public domain:
 
 ```text
-https://<project-name>.pages.dev
+https://vibevault.<your-account>.workers.dev
 ```
 
 This repo includes:

@@ -1,28 +1,28 @@
 # Deploy VibeVault to Cloudflare
 
-Use Cloudflare with GitHub integration. The simplest path is Cloudflare Pages,
-which gives the site a free public `*.pages.dev` domain and automatic deploys
-from GitHub.
+Use Cloudflare Workers Static Assets with GitHub integration. This path gives
+the site a free public `*.workers.dev` domain, supports a non-empty deploy
+command, and uses `wrangler.jsonc` as the source of truth for SPA fallback.
 
-## Cloudflare Pages Settings
+## Cloudflare Settings
 
 - Framework preset: `React (Vite)` or `None`
 - Build command: `pnpm build`
-- Build output directory: `dist`
+- Deploy command: `pnpm run deploy`
+- Output directory: `dist`
 - Root directory: `/`
 - Production branch: `main`
-- Deploy command: leave empty
 
 If Cloudflare asks for Node configuration, set:
 
-- `NODE_VERSION`: `20`
+- `NODE_VERSION`: `22`
 
 ## Steps
 
 1. Push this repository to GitHub.
 2. Open Cloudflare Dashboard.
 3. Go to `Workers & Pages`.
-4. Create a Pages project.
+4. Create a Workers project from Git.
 5. Select `Connect to Git`.
 6. Choose the GitHub repository.
 7. Use the settings above.
@@ -31,22 +31,35 @@ If Cloudflare asks for Node configuration, set:
 After the first deployment, Cloudflare provides a free public domain:
 
 ```text
-https://<project-name>.pages.dev
+https://vibevault.<your-account>.workers.dev
 ```
 
 Every push to the production branch will rebuild and redeploy the site.
 
-## If You Use Wrangler Deploy
+## Why the Deploy Command Matters
 
-Your failed deployment log shows Cloudflare ran:
+The previous failed deployment log ran:
 
 ```bash
 npx wrangler deploy
 ```
 
-That path deploys with Workers Static Assets instead of plain Pages output.
-For that mode, SPA fallback must be configured in `wrangler.jsonc`, not with
-Pages-style `_redirects`.
+Without an explicit repository config, Wrangler can fall back to interactive
+project setup or an existing default Worker, which is how a deployed site can
+still show `Hello World`. Use the repo script instead:
+
+```bash
+pnpm run deploy
+```
+
+That script expands to:
+
+```bash
+wrangler deploy --config wrangler.jsonc
+```
+
+For Workers Static Assets, SPA fallback must be configured in `wrangler.jsonc`,
+not with a Pages-style `_redirects` file.
 
 This repo includes:
 
@@ -63,8 +76,13 @@ Use:
 
 ```bash
 pnpm build
-npx wrangler deploy
+pnpm run deploy
 ```
+
+If the public URL still shows `Hello World` after this change, open Cloudflare
+and delete or disable the older `vibevault` Worker/route, then redeploy from the
+GitHub-connected project. Also confirm you are visiting the latest
+`*.workers.dev` URL for this project, not an older Worker URL.
 
 ## Included Deployment Files
 
