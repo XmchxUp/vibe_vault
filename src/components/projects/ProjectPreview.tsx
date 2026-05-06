@@ -13,37 +13,38 @@ export function ProjectPreview({
   stage = false,
 }: ProjectPreviewProps) {
   if (project.format === "phone" && stage) {
-    const gallery = project.gallery?.slice(0, 3) ?? [project.cover].filter(Boolean);
+    const gallery = project.gallery?.filter(Boolean) ?? [project.cover].filter(Boolean);
 
     return (
       <div className="relative flex h-full min-h-full items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_50%_22%,rgba(255,43,214,0.22),transparent_24rem),radial-gradient(circle_at_30%_80%,rgba(0,229,255,0.13),transparent_22rem),#090b14] p-6">
         <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(120deg,rgba(255,255,255,0.75)_1px,transparent_1px)] [background-size:22px_22px]" />
-        <div className="relative flex w-full max-w-[760px] items-center justify-center gap-4 sm:gap-6">
-          {gallery.map((src, index) => (
-            <div
-              key={src}
-              className={`overflow-hidden rounded-[28px] border border-white/18 bg-black shadow-[0_28px_90px_rgba(0,0,0,0.45)] ${
-                index === 1
-                  ? "z-10 w-[36%] min-w-[190px]"
-                  : "hidden w-[29%] opacity-72 sm:block"
-              }`}
-              style={{
-                transform:
-                  index === 0
-                    ? "rotate(-7deg) translateY(24px)"
-                    : index === 2
-                      ? "rotate(7deg) translateY(24px)"
-                      : "translateY(-8px)",
-              }}
-            >
-              <img
-                src={src}
-                alt={`${project.title} mobile preview ${index + 1}`}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          ))}
+        <div className="relative grid w-full max-w-[820px] grid-cols-2 items-center justify-center gap-3 sm:flex sm:gap-4">
+          {gallery.map((src, index) => {
+            const midpoint = (gallery.length - 1) / 2;
+            const offset = index - midpoint;
+            const isCenter = Math.abs(offset) < 0.6;
+
+            return (
+              <div
+                key={src}
+                className={`overflow-hidden rounded-[22px] border border-white/18 bg-black shadow-[0_28px_90px_rgba(0,0,0,0.45)] sm:rounded-[28px] ${
+                  isCenter ? "sm:z-10 sm:w-[30%]" : "sm:w-[24%] sm:opacity-78"
+                }`}
+                style={{
+                  transform: `rotate(${offset * 4.2}deg) translateY(${
+                    Math.abs(offset) * 18
+                  }px)`,
+                }}
+              >
+                <img
+                  src={src}
+                  alt={`${project.title} mobile preview ${index + 1}`}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     );
