@@ -56,6 +56,7 @@ Build command: pnpm build
 Build output directory: dist
 Production branch: main
 Node version: 20
+Deploy command: leave empty
 ```
 
 Cloudflare will provide a free public domain:
@@ -66,6 +67,6 @@ https://<project-name>.pages.dev
 
 This repo includes:
 
-- `public/_redirects` for SPA fallback.
 - `public/_headers` for asset caching and basic security headers.
+- `wrangler.jsonc` for Workers Static Assets SPA fallback if using Wrangler deploy.
 - `DEPLOYMENT.md` for deployment steps.

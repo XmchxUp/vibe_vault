@@ -1,8 +1,8 @@
-# Deploy VibeVault to Cloudflare Pages
+# Deploy VibeVault to Cloudflare
 
-Use Cloudflare Pages with GitHub integration. This gives the site a free public
-`*.pages.dev` domain, automatic deploys from GitHub, and preview deployments for
-branches and pull requests.
+Use Cloudflare with GitHub integration. The simplest path is Cloudflare Pages,
+which gives the site a free public `*.pages.dev` domain and automatic deploys
+from GitHub.
 
 ## Cloudflare Pages Settings
 
@@ -11,6 +11,7 @@ branches and pull requests.
 - Build output directory: `dist`
 - Root directory: `/`
 - Production branch: `main`
+- Deploy command: leave empty
 
 If Cloudflare asks for Node configuration, set:
 
@@ -35,7 +36,37 @@ https://<project-name>.pages.dev
 
 Every push to the production branch will rebuild and redeploy the site.
 
+## If You Use Wrangler Deploy
+
+Your failed deployment log shows Cloudflare ran:
+
+```bash
+npx wrangler deploy
+```
+
+That path deploys with Workers Static Assets instead of plain Pages output.
+For that mode, SPA fallback must be configured in `wrangler.jsonc`, not with
+Pages-style `_redirects`.
+
+This repo includes:
+
+```jsonc
+{
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}
+```
+
+Use:
+
+```bash
+pnpm build
+npx wrangler deploy
+```
+
 ## Included Deployment Files
 
-- `public/_redirects`: SPA fallback so direct URL refreshes resolve to `index.html`.
 - `public/_headers`: long-lived caching for built assets and basic security headers.
+- `wrangler.jsonc`: Workers Static Assets config with SPA fallback.
