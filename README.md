@@ -2,14 +2,6 @@
 
 VibeVault is a personal portfolio showcase for AI-era creations built with Codex and Claude. The site opens directly into a work-first gallery: real project screenshots, focused project descriptions, technology tags, and quick links to demos or source code.
 
-## Featured Work
-
-- **Mood2Know CN** — WeChat mini program for anonymous mood check-ins and emotional map visualization.
-- **Bili Live Danmu Analyzer** — realtime Bilibili live danmaku analysis dashboard for operators.
-- **Workout Page** — personal strength-training analytics site powered by Hevy workout history.
-- **Xmchx's Blog** — personal writing system for technical notes, life records, and long-term archives.
-- **Cutline** — Rust CLI for declarative ffmpeg-based video cutting workflows.
-
 ## Tech Stack
 
 - React
