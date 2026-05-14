@@ -29,6 +29,7 @@ export function Hero() {
   const y = useTransform(scrollYProgress, [0, 0.35], [0, 86]);
   const opacity = useTransform(scrollYProgress, [0, 0.28], [1, 0]);
   const showcaseProjects = projects.slice(0, 3);
+  const projectCount = String(projects.length).padStart(2, "0");
 
   return (
     <section
@@ -115,7 +116,7 @@ export function Hero() {
             aria-label="Portfolio signals"
           >
             {[
-              ["04", "shipped works"],
+              [projectCount, "project index"],
               ["2026", "AI era build"],
               ["R3F", "motion stage"],
             ].map(([value, label]) => (

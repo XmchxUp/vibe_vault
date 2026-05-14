@@ -40,8 +40,9 @@ export function ProjectsSection() {
               Curated Builds
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-vault-muted sm:text-lg">
-              Four shipped pieces, presented as product stories: live analysis,
-              quantified self, writing infrastructure, and terminal-native media tooling.
+              Current builds presented as product stories: live analysis, agent
+              skills, quantified self, writing infrastructure, and
+              terminal-native media tooling.
             </p>
           </div>
 

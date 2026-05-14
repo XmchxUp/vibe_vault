@@ -135,7 +135,7 @@ export function PortfolioShowcase() {
               </div>
             </div>
 
-            <aside className="grid gap-4">
+            <aside className="grid min-h-0 gap-4 lg:max-h-[76vh] lg:grid-rows-[auto_minmax(0,1fr)]">
               <div className="rounded-[8px] border border-white/12 bg-white/[0.06] p-5 backdrop-blur-2xl sm:p-6">
                 <p
                   className={`mb-3 text-xs font-semibold uppercase tracking-[0.22em] ${accentText[activeProject.accent]}`}
@@ -185,7 +185,7 @@ export function PortfolioShowcase() {
                 </div>
               </div>
 
-              <div className="rounded-[8px] border border-white/12 bg-white/[0.04] p-3 backdrop-blur-2xl">
+              <div className="min-h-0 overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.04] p-3 backdrop-blur-2xl">
                 <div className="mb-3 flex items-center justify-between px-2 pt-1">
                   <p className="text-xs uppercase tracking-[0.22em] text-vault-muted">
                     Index
@@ -210,7 +210,7 @@ export function PortfolioShowcase() {
                   </div>
                 </div>
 
-                <div className="grid gap-2">
+                <div className="grid max-h-[520px] gap-2 overflow-y-auto pr-1 lg:max-h-full">
                   {visibleProjects.map((project, index) => {
                     const isActive = index === activeIndex;
 
